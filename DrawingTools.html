@@ -62,16 +62,52 @@ console.log(x);
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV3RBKqPqkWRpWi--ezJYjmx6elUhEFuU&libraries=drawing&callback=initMap"
          async defer></script>
 
-<button onclick="myFunction()">Try it</button>
+<button onclick="callAPI()">Try it</button>
 
 
-// 
+<!--JOHANN -  This is the function that runs when the onclick above is click
+this could also be placed in text or seperately if needed.  --> 
 <script>
 function myFunction() {
   var btn = document.createElement("BUTTON");
   document.body.appendChild(btn);
 }
 </script>
+
+<!--JOHANN : A jajvascript client call can easily be made
+the easiest method is using the postman gui, generating it
+then pasting it here-->
+
+<script>
+
+    function callAPI()
+    {
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://dashboard.situm.es/api/v1/real_time/analytics/raw_pose_data?date=2019-02-15T16:01:42.000Z&building_id=4500&date_end=2019-02-15T16:37:14.000Z",
+  "method": "GET",
+  "headers": {
+    "X-API-EMAIL": "support@ioloc.co.za",
+    "X-API-KEY": "ed4e0375872dc2935c32d91babbb502307f18dc4566901338e93ad14fba95550",
+    "cache-control": "no-cache",
+    "Postman-Token": "d57ec884-a5ad-4244-83d4-de338a322db2"
+  }
+}
+
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+    }
+
+
+</script>
+
+
+
+
+
 
 
 
