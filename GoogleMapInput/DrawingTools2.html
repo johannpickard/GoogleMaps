@@ -7,9 +7,12 @@
     <meta charset="UTF-8">
     <title>Drawing Tools</title>
 
-    <!---->
+    <!--Johann: this is some javascript loaded in the header-->
     <script type="text/javascript"
+
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV3RBKqPqkWRpWi--ezJYjmx6elUhEFuU&libraries=drawing&callback=initMap">    </script>
+
+    <!--ENclosed in the style tabs is the CSS, making changes here will change how the thing looks-->
     <style type="text/css">
       #map, html, body {
         padding: 0;
@@ -42,6 +45,8 @@
         margin-top: 5px;
       }
     </style>
+
+
     <script type="text/javascript">
       var drawingManager;
       var selectedShape;
@@ -68,6 +73,19 @@
           selectedShape.setMap(null);
         }
       }
+
+
+////////////////////////////////////////////////////////////////
+////// THis is the part that allows us to make that popup //////
+////////////////////////////////////////////////////////////////
+setTimeout(function(){
+
+google.maps.event.addListener(drawingManager, 'polylinecomplete', function(line) {
+alert(line.getPath().getArray().toString());
+
+});
+
+},1000);
 
       function selectColor(color) {
         selectedColor = color;
