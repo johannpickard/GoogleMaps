@@ -13,7 +13,9 @@
             };
 
 
-           //
+           //for some reason this has to eb declared before where I call this ...
+           // dijkstra.single_source_shortest_paths() is how you call this function.
+           // dijkstra.single_source_shortest_paths(starting point, ending point, graph in specified format)
 
             var dijkstra = {
   single_source_shortest_paths: function(graph, s, d) {
@@ -154,9 +156,10 @@
 
 
 
-// "var paths" stores the response of the function
-// 
 
+// this calls the function and stores the reponse in a variable
           var paths = dijkstra.single_source_shortest_paths(graph, 'a', 'b');
 
+// this just prints the response back to the command line console interface thign.
+// this 
             console.log(paths);
