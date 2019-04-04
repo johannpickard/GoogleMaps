@@ -64,6 +64,8 @@ console.log(x);
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV3RBKqPqkWRpWi--ezJYjmx6elUhEFuU&libraries=drawing&callback=initMap"
          async defer></script>
 
+
+<!--This is a button that can call any function on click-->
 <button onclick="callAPI()">Try it</button>
 
 
@@ -80,8 +82,12 @@ function myFunction() {
 the easiest method is using the postman gui, generating it
 then pasting it here-->
 
-<script>
 
+
+
+
+<script>
+// this is a function that can be called by the button
     function callAPI()
     {
 var settings = {
@@ -97,15 +103,10 @@ var settings = {
   }
 }
 
-
-
-
 $.ajax(settings).done(function (response) {
   console.log(response);
 });
     }
-
-
 </script>
 
 
