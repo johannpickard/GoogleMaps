@@ -1,5 +1,5 @@
 'use strict';
-
+// STATUS: this test works completely, but the grpah data format is not convenient.
 
 // I need to declare a graph ... the one below shoudl do. This will be unique for my buidling
 
