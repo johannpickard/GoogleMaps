@@ -1,0 +1,3 @@
+
+// to  add a thing called tips.txt to the current directory.
+gitpod /workspace/GoogleMaps $ touch node_tips.txt
