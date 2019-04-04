@@ -5,6 +5,9 @@
 
 
 
+/////////////////////////////////////////////////////////////////
+//////// DEFINITTIONS OF FUNCTIONS THAT ARE CALLED BELOW ////////
+/////////////////////////////////////////////////////////////////
 
 
 //JOHANN : The function below will get called when we define a vertex. Or as I like to call them nodes or dots or
@@ -33,7 +36,7 @@ addEdge(node1, node2)
 
 
 
-// JOHANN : Im not 100% sure what this function does 
+// JOHANN : Im not 100% sure what this function does
 printGraph()
 {
     // get all the vertices
