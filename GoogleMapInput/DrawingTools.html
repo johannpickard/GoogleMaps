@@ -52,13 +52,6 @@
 
 
 
-function showpolyline{
-// written by Johann this gets the polyline
-x = Polyline.getPath()
-
-// this will write something to console
-console.log(x);
-}
 
       }
     </script>
@@ -67,8 +60,19 @@ console.log(x);
 
 
 <!--This is a button that can call any function on click-->
-<button onclick="callAPI()">Try it</button>
+<button onclick="showpolyline()">Try it</button>
 
+
+
+<script>
+function showpolyline(){
+// written by Johann this gets the polyline
+//x = Polyline.getPath()
+
+// this will write something to console in the browser (right click inspect to see this other console)
+console.log('potatot');
+}
+</script>
 
 <!--JOHANN -  This is the function that runs when the onclick above is click
 this could also be placed in text or seperately if needed.  -->
