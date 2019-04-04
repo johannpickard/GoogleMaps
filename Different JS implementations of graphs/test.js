@@ -1,3 +1,11 @@
+// to run this script from the terminal . ... type in "node test.js"
+// the response in the terminal will be as below. 
+// gitpod /workspace/GoogleMaps/Different JS implementations of graphs $ node test.js
+//{ b: 'd', c: 'f', d: 'a', e: 'd', f: 'e' }
+
+
+
+
 'use strict';
 // STATUS: this test works completely, but the grpah data format is not convenient.
 
