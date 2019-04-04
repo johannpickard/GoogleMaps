@@ -1,3 +1,7 @@
 
-// to  add a thing called tips.txt to the current directory.
+// to  add a thing called tips.txt to the current directory, type in "touch node_tips.txt"
 gitpod /workspace/GoogleMaps $ touch node_tips.txt
+
+
+// to run a javascript file called test, type in "node test" as shown below
+gitpod /workspace/GoogleMaps $ node test.js
