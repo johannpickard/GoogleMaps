@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>Drawing Tools</title>
 
+
     <!--Johann: this is some javascript loaded in the header-->
     <script type="text/javascript"
 
@@ -82,6 +83,14 @@ setTimeout(function(){
 
 google.maps.event.addListener(drawingManager, 'polylinecomplete', function(line) {
 alert(line.getPath().getArray().toString());
+
+
+
+document.getElementById("p1").innerHTML = '';
+
+
+
+
 
 });
 
@@ -211,6 +220,37 @@ alert(line.getPath().getArray().toString());
       <div id="color-palette"></div>
       <div>
         <button id="delete-button">Delete Selected Shape</button>
+
+<!--the visual part of the HTML form , with input fields-->
+
+<form id="frm1">
+
+  <input type="button" onclick="myFunction()" value="Submit">
+  <p id="p1">Will appear here</p>
+</form>
+
+
+<script>
+
+function myFunction()
+{
+// this goes into the document object, finds the text at id = pi  and replaces it with the text deinfed.
+    document.getElementById("p1").innerHTML = lat;
+}
+</script>
+
+
+<script>
+ // o
+
+
+</script>
+
+
+
+
+
+
       </div>
     </div>
     <div id="map"></div>
