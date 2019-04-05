@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+
+#map {
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+    </style>
+  </head>
+  <body>
+
+
+<script>
+
+
+/// this initialises the map
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: {lat: -25.363882, lng: 131.044922 }
+  });
+
+
+
+// this basically just listens for a click, intercepts the click "event vairable"
+//
+  map.addListener('click', function(e) {
+    JohannsMadeUpFunction(e.latLng);
+  });
+}
+
+
+// A placeholder function that can fdo anyting with the incoming lat and long stream
+function JohannsMadeUpFunction(latLng) {
+
+document.getElementById("johanntext").innerHTML = latLng;
+
+}
+</script>
+
+
+
+<div id="map"></div>
+<!-- Replace the value of the key parameter with your own API key. -->
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV3RBKqPqkWRpWi--ezJYjmx6elUhEFuU&callback=initMap">
+</script>
+
+
+<p id=johanntext>  Some text </p>
+
+  </body>
+
+  </html>
