@@ -1,4 +1,7 @@
 
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -47,8 +50,27 @@ function JohannsMadeUpFunction(latLng) {
 
 
 // this searches for the HTML element and updates it with the incoming data fromt he click
-document.getElementById("johanntext").innerHTML = latLng;
+document.getElementById("j1").innerHTML = latLng;
 
+// first there is this class thing that we implmenet
+class Graph {
+    // defining vertex array and
+    // adjacent list
+    constructor(noOfVertices)
+    {
+        this.noOfVertices = noOfVertices;
+        this.AdjList = new Map();
+    }
+}
+
+
+
+
+
+
+
+// this searches for the HTML element and updates it with the incoming data fromt he click
+document.getElementById("j2").innerHTML = 'get_keys';
 }
 </script>
 
@@ -61,7 +83,37 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV3RBKqPqkWRpWi--ezJYjmx6
 </script>
 
 
-<p id=johanntext>  Some text </p>
+<p id=j1>  Some text </p>
+
+<p id=j2>  Some text </p>
+
+
+
+
+
+
+<script>
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
 
   </body>
 
