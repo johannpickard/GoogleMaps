@@ -6,7 +6,7 @@
 <html>
   <head>
     <title>Geolocation</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
     <meta charset="utf-8">
     <style>
 
@@ -57,12 +57,25 @@ document.getElementById("j1").innerHTML = latLng;
 
 
 /// this create a new graph with 6 nodes
+// we might want to end up only creating this when all inputs are captured
 var g = new Graph(6);
+var vertices = [ 'A', 'B', 'C', 'D', 'E', 'F' ];
+// adding edges
+g.addEdge('A', 'B');
+g.addEdge('A', 'D');
+g.addEdge('A', 'E');
+g.addEdge('B', 'C');
+g.addEdge('D', 'E');
+g.addEdge('E', 'F');
+g.addEdge('E', 'C');
+g.addEdge('C', 'F');
+
+var strng = g.printGraph();
 
 
 
 // this searches for the HTML element and updates it with the incoming data fromt he click
-document.getElementById("j2").innerHTML = 'get_keys';
+document.getElementById("j2").innerHTML = strng;
 }
 </script>
 
@@ -154,8 +167,13 @@ printGraph()
         for (var j of get_values)
             conc += j + " ";
 
+
+var printstring =i + " -> " + conc
+
         // print the vertex and its adjacency list
-        console.log(i + " -> " + conc);
+        console.log(printstring);
+
+        return =printstring;
     }
 }
 
