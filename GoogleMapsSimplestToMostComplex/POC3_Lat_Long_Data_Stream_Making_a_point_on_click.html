@@ -7,9 +7,7 @@ puts them as test at the bottom of the page-->
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Geolocation</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
+
     <style>
 
 #map {
@@ -41,7 +39,11 @@ function initMap() {
 // this basically just listens for a click, intercepts the click "event vairable"
 // 'click' can be replaced with any other event google listsa a bunch of them
   map.addListener('click', function(e) {
+     // this calls the function to change the HTML text to show the contined value
     JohannsMadeUpFunction(e.latLng);
+
+    // this function adds a marker to the maps
+
   });
 }
 
@@ -54,17 +56,30 @@ function JohannsMadeUpFunction(latLng) {
 // this searches for the HTML element and updates it with the incoming data fromt he click
 document.getElementById("johanntext").innerHTML = latLng;
 
+
+
+
+}
+
+
+
+// add the code that will add a new marker
+
+function AddMarkerOnClick(latLng){
+
+  var marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          title: 'Hello World!'
+        });
+
 }
 
 
 
 
 
-
-
-
-
-
+// add the code that shows the market data you have clicked on
 
 
 
