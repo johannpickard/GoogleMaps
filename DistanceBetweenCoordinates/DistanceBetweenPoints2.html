@@ -1,0 +1,66 @@
+<!--this function accepts two different co-ordinate pairs and calcualtes the distance betwene them-->
+
+
+
+
+<html>
+    <head>
+    </head>
+    <body>
+
+
+<div id="map"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+/// this initialises the map
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: {lat: -25.363882, lng: 131.044922 }
+  });
+
+
+
+
+
+
+
+
+
+
+
+//requires two points be passed into the function
+
+//put the two co-ordinate pairs being fed in, and put them in the format that calcDistance function is expecting
+var p1 = new google.maps.LatLng(45.463688, 9.18814);
+var p2 = new google.maps.LatLng(46.0438317, 9.75936230000002);
+
+//this just makes it pop up as a message to the user
+alert(calcDistance(p1, p2));
+
+//calculates distance between two points in km's
+function calcDistance(p1, p2) {
+  return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+}
+</script>
+
+    </body>
+</html>
+
+
+
+
+
