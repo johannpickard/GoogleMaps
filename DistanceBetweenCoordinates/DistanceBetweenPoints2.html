@@ -5,6 +5,19 @@
 
 <html>
     <head>
+
+            <style>
+
+#map {
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+    </style>
     </head>
     <body>
 
@@ -56,6 +69,11 @@ function calcDistance(p1, p2) {
   return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
 }
 </script>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV3RBKqPqkWRpWi--ezJYjmx6elUhEFuU&callback=initMap">
+</script>
+
 
     </body>
 </html>
