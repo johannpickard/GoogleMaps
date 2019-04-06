@@ -1,0 +1,79 @@
+
+<!--https://hackernoon.com/the-javascript-developers-guide-to-graphs-and-detecting-cycles-in-them-96f4f619d563-->
+<!--this is a simple graph that is hard coded and displays in console-->
+<!--this allows you to hardcode a graph in-->
+
+
+
+<button onclick="printthis()">Click me</button>
+
+<p id="demo"></p>
+
+
+
+<script>
+
+// this is a function which makes a grpah
+function Graph()
+{
+    this.adjList= {}
+}
+
+/// this is following the
+// For more information on what-tf I am doing here
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype
+Graph.prototype.addVertex = function(vertex){
+    this.adjList[vertex]=[]
+}
+
+Graph.prototype.addEdge =function(vertex1,vertex2){
+    //note, this makes a directed vertex
+    //for a "two way vertex"
+    //https://www.geeksforgeeks.org/implementation-graph-javascript/
+    this.adjList[vertex1].push(vertex2)
+}
+
+
+
+const graph = new Graph()
+
+// I can add single nodes one at a time
+graph.addVertex('A');
+graph.addVertex('B');
+graph.addVertex('C');
+graph.addVertex('D');
+graph.addVertex('E');
+
+// I can add edges one at a time (single direction)
+graph.addEdge('A','B')
+graph.addEdge('D','E')
+graph.addEdge('C','E')
+graph.addEdge('A','D')
+graph.addEdge('A','C')
+graph.addEdge('E','B')
+graph.addEdge('D','B')
+
+
+
+
+
+
+
+
+
+
+
+function printthis()
+{
+console.log(graph.toString());
+
+}
+
+var myJSON = JSON.stringify(graph);
+
+
+document.getElementById("demo").innerHTML = myJSON;
+
+
+</script>
+
