@@ -6,7 +6,7 @@
 <html>
     <head>
 
-            <style>
+    <style>
 
 #map {
   height: 100%;
@@ -22,30 +22,11 @@ html, body {
     <body>
 
 
-<div id="map"></div>
-
-
-
-
-
-
-
-
-
-
-
 
 <script>
 
 
-/// this initialises the map
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: {lat: -25.363882, lng: 131.044922 }
-  });
-
-
+</script>
 
 
 
@@ -68,11 +49,17 @@ alert(calcDistance(p1, p2));
 function calcDistance(p1, p2) {
   return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
 }
-</script>
+
+
+
+
+
 
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV3RBKqPqkWRpWi--ezJYjmx6elUhEFuU&callback=initMap">
 </script>
+
+<div id="map"></div>
 
 
     </body>
