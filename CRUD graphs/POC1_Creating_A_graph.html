@@ -16,25 +16,26 @@
 // this is a function which makes a grpah
 function Graph()
 {
-    this.adjList= {}
+    // changing the name of OurLittleGraph will change it in the resulting JSON
+    this.OurLittleGraph= {}
 }
 
 /// this is following the
 // For more information on what-tf I am doing here
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype
 Graph.prototype.addVertex = function(vertex){
-    this.adjList[vertex]=[]
+    this.OurLittleGraph[vertex]=[]
 }
 
 Graph.prototype.addEdge =function(vertex1,vertex2){
     //note, this makes a directed vertex
     //for a "two way vertex"
     //https://www.geeksforgeeks.org/implementation-graph-javascript/
-    this.adjList[vertex1].push(vertex2)
+    this.OurLittleGraph[vertex1].push(vertex2)
 }
 
 
-
+// Created a new variable called graph ... which has the type Graph
 const graph = new Graph()
 
 // I can add single nodes one at a time
