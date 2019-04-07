@@ -69,9 +69,10 @@ function printthis()
 console.log(graph.toString());
 }
 
+// this convert the graph from a javascript onject into a json string.
 var myJSON = JSON.stringify(graph);
 
-
+// this changes the txt on the html page to display the JSON string representation of the JS object
 document.getElementById("demo").innerHTML = myJSON;
 
 
