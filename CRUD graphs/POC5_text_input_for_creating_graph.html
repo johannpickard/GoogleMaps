@@ -3,12 +3,15 @@
 <!--this is a simple graph that is hard coded and displays in console-->
 <!--this allows you to hardcode a graph in-->
 <!--this extends the previous work in POC1-->
+<!--An example of a data fpormat conversion is given below-->
+<!--https://stackoverflow.com/questions/36662533/adjacency-list-from-json-data -->
 
 
 <!--This is just a btoon that when clicked runs the javascript function below-->
 <button onclick="printthis()">Click me</button>
 
-<p id="writing on page"></p>
+<p> Ajacency list representation of nodes</p>
+<p id="AjacencyListJSON"></p>
 
 
 
@@ -74,7 +77,7 @@ console.log(graph.toString());
 var myJSON = JSON.stringify(graph);
 
 // this changes the txt on the html page to display the JSON string representation of the JS object
-document.getElementById("writing on page").innerHTML = myJSON;
+document.getElementById("AjacencyListJSON").innerHTML = myJSON;
 }
 
 </script>
