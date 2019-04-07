@@ -50,11 +50,11 @@ function initialize() {
     polyline = new google.maps.Polyline({
         strokeColor: 'red',
         strokeWeight: 1,
-        map: map
+        map: map,
+        
     });
 
     google.maps.event.addListener(map, 'click', function (event) {
-
         addPoint(event.latLng);
     });
 }
@@ -72,6 +72,7 @@ function removePoint(marker) {
         }
     }
 }
+
 
 function addPoint(latlng) {
 
