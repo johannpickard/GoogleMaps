@@ -35,6 +35,9 @@
 
 
 // determine what lat and long format this is
+// Its not geojson
+// see here https://google-developers.appspot.com/maps/documentation/utils/geojson/
+
         var mypolyline = [
           {lat: 37.772, lng: -122.214},
           {lat: 21.291, lng: -157.821},
@@ -47,8 +50,8 @@
           path: mypolyline,
           geodesic: true,
           strokeColor: '#FF0000',
-          strokeOpacity: 1.0,
-          strokeWeight: 2
+          strokeOpacity: 3.0,
+          strokeWeight: 10
         });
 
         flightPath.setMap(map);
