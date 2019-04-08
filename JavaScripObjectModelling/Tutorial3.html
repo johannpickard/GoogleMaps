@@ -11,17 +11,39 @@
 <p id="line1"></p>
 <p id="line2"></p>
 <p id="line3"></p>
+<p id="line4"></p>
 
 
 <script>
 
 
+  /// one method is by using something called a constructor
+ /// this is some random sample code
+  var Obj = function(name) {
+  this.name = name
+  }
+  var c = new Obj("hello");
+
+
+/// Applying the same logic as the random sample code above
+
+var node =  function(Latitude,Longitude,ID)
+{
+    this.Latitude =Latitude
+    this.Longitude = Longitude
+    this.ID = ID
+}
+
+// I think this is kind of like making an instance of the above tempalte
+
+var node1 = new node("0","50","1")
 
 
 // Display some data from the object:
-document.getElementById("line1").innerHTML = "Text" ;
-document.getElementById("line2").innerHTML = "Text" ;
-document.getElementById("line3").innerHTML = "Text" ;
+document.getElementById("line1").innerHTML = "Test " + c.name ;
+document.getElementById("line2").innerHTML = "Latitude : " + node1.Latitude;
+document.getElementById("line3").innerHTML = "Longitude : " + node1.Longitude;
+document.getElementById("line4").innerHTML = "ID : " + node1.ID;
 
 </script>
 
