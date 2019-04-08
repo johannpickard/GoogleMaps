@@ -1,3 +1,35 @@
 <!--Implementing javascript stuff from tutorials-->
 <!--https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain-->
 
+<!-- dependencies (jquery, handlebars and bootstrap) -->
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<link type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<!-- alpaca -->
+<link type="text/css" href="//code.cloudcms.com/alpaca/1.5.24/bootstrap/alpaca.min.css" rel="stylesheet"/>
+<script type="text/javascript" src="//code.cloudcms.com/alpaca/1.5.24/bootstrap/alpaca.min.js"></script>
+
+
+<div id="form1"></div>
+<script type="text/javascript">
+$("#form1").alpaca({
+    "schema": {
+        "title": "What do you think of Alpaca?",
+        "type": "object",
+        "properties": {
+            "name": {
+                "type": "string",
+                "title": "Name"
+            },
+            "ranking": {
+                "type": "string",
+                "title": "Ranking",
+                // Feed some sort of set of strings into here
+                "enum": ['excellent', 'not too shabby', 'alpaca built my hotrod']
+            }
+        }
+    }
+});
+</script>
