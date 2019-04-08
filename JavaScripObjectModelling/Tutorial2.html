@@ -1,11 +1,30 @@
+<!--In this tutorial, documentation was used http://lib.ru/JAVA/javascr/model.html-->
+<!-- and an exampel from here https://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_object-->
+<!--hard coded value for the object - but thats not the right way to do it apparently-->
 
+<!DOCTYPE html>
+<html>
+<body>
 
+<h2>JavaScript Objects</h2>
+
+<p id="line1"></p>
+<p id="line2"></p>
+<p id="line3"></p>
 
 
 <script>
-function Employee() {
-  this.name = '';
-  this.dept = 'general';
-}
+// Objects with hard coded values
+var node1 = {Latitude:"0", Longitude:"500", id:"1"};
+// the distance bewteen nodes is calculated by a function dist(co-ordpair1, co-ordpair1)
+var edge = {StartId:"1", EndId:"2", DistanceBetweenNodesMeters:"50"}
+
+// Display some data from the object:
+document.getElementById("line1").innerHTML = "Node id " + node1.id;
+document.getElementById("line2").innerHTML = "Latitude " + node1.Latitude;
+document.getElementById("line3").innerHTML = "Longitude " + node1.Longitude;
+
 </script>
 
+</body>
+</html>
