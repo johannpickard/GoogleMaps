@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Creating graph from incidence matrix</title>
+        <meta name="description" content="Creating graph from incidence matrix online and see visual result" />        <meta name="keywords" content="graph online, plot graph, creating graph from incidence matrix, incidence matrix" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/i/image/touch_icon/favicon_144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/i/image/touch_icon/favicon_114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/i/image/touch_icon/favicon_72x72.png" />
+        <link rel="apple-touch-icon-precomposed" href="/i/image/touch_icon/favicon_57x57.png" />
+
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+        <meta http-equiv="cleartype" content="on">
+
+
+
+        <script src="/i/js/dev/jquery-2.0.3.js" ></script>
+
+<!--
+        <script type="text/javascript" src="/i/js/dev/jquery-2.0.3.js"></script>
+        <script type="text/javascript" src="/i/js/dev/jquery.browser.js"></script>
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <meta name="yandex-verification" content="66de0a468e59b81b" />
+
+        <!-- Следущая строчка нужна для обозначения места вставки объеденённых css/js файлов. Её не следует удалять.-->
+        <!-- extraPacker --><link rel="stylesheet" charset="UTF-8" type="text/css" href="/tmp/auto_merge_css_js/css/encreate_graph_by_incidence_matrix/css1552175906.css" />
+
+
+
+	    <script src="/script/Graph.js"></script>
+    </head>
+    <body>
+        <div class="container page-wrap" id="mainContainer">
+<!--            <div class="header"> -->
+<nav class="navbar navbar-default" id="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/en/"><span class="fa fa-sitemap fa-fw"></span> Graph Online</a>
+    </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav navbar-right">
+<li class=""><a href="/en/">Home</a></li>
+<li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"> Create Graph <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href="/en/create_graph_by_matrix">Using adjacency matrix</a></li>
+<li><a href="/en/create_graph_by_incidence_matrix">Using incidence matrix</a></li>
+<li><a href="/en/graphs_examples">Using graph example</a></li>
+</ul>
+</li>
+<li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"> Help <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href="/en/help">Quick Start</a></li>
+<li><a href="/en/wiki">Wiki</a></li>
+</ul>
+</li>
+<li class=""><a href="/en/news">News</a></li>
+<li class=""><a href="/en/contacts">Contacts</a></li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="/i/image/flags/enru.png" alt=""> Language <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href="/en/create_graph_by_incidence_matrix" title="English" class="selected"><img src="/i/image/flags/en.png" alt="English"> English</a></li>
+<li><a href="/create_graph_by_incidence_matrix" title="Русский" class=""><img src="/i/image/flags/ru.png" alt="Русский"> Русский</a></li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+    </div>
+</nav>
+            <div class="content">
+
+
+<script>
+
+// Current matrix size
+var g_MatrixWidth  = 2;
+var g_MatrixHeight = 3;
+
+function PackMatrix()
+{
+    var matrix = "";
+
+    for (i = 0; i < g_MatrixHeight; i++)
+    {
+        for (j = 0; j < g_MatrixWidth; j++)
+        {
+            var element = document.getElementsByName("field" + i + j)[0];
+            matrix = matrix + (element.value.length > 0 ? element.value : "0") + ", ";
+        }
+        matrix = matrix + "\n";
+    }
+    return matrix;
+}
+
+function CopyMatrixToTextInput()
+{
+    document.getElementById("IncidenceMatrixFieldPage").value = PackMatrix();
+}
+
+function _ShowTextInput()
+{
+    $( "#IncidenceMatrixFieldPage" ).show();
+    $( "#MatrixForm" ).hide();
+    $( "#TextDescription").show();
+    $( "#MatrixDescription").hide();
+}
+
+function _ShowMatrixInput()
+{
+    $( "#MatrixForm" ).show();
+    $( "#IncidenceMatrixFieldPage" ).hide();
+    $( "#TextDescription").hide();
+    $( "#MatrixDescription").show();
+}
+
+function ShowTextInput()
+{
+    _ShowTextInput();
+    document.getElementById("showMatrix").className = "btn btn-default";
+    document.getElementById("showText").className = "btn btn-default active";
+}
+
+function ShowMatrixInput()
+{
+    _ShowMatrixInput();
+    document.getElementById("showMatrix").className = "btn btn-default active";
+    document.getElementById("showText").className = "btn btn-default";
+}
+
+
+
+function CopyMatrixToMatrixInput()
+{
+    var graph = new Graph();
+
+    var colsObj = {};
+    var rowsObj = {};
+
+    if (graph.TestIncidenceMatrix($( "#IncidenceMatrixFieldPage" ).val(), rowsObj, colsObj))
+    {
+        var rows = rowsObj.rows;
+        var cols = colsObj.cols;
+
+        for (var i = g_MatrixWidth; i < cols[0].length; i++)
+        {
+            IncSizeW();
+        }
+
+        for (var i = g_MatrixHeight; i < cols.length; i++)
+        {
+            IncSizeH();
+        }
+
+        for (var i = 0; i < cols.length; i++)
+        {
+            for (var j = 0; j < cols[0].length; j++)
+            {
+                var element = document.getElementsByName("field" + i + j)[0];
+                element.value = cols[i][j];
+            }
+        }
+    }
+    else
+    {
+        ShowTextInput();
+    }
+}
+
+function CreateInputElement(col, row)
+{
+    var input = document.createElement("input");
+    input.type = "text";
+    input.size = 3;
+    input.name = "field" + col + row;
+    input.value = 0;
+    input.onkeyup = function() {CopyMatrixToTextInput();};
+
+    return input;
+}
+
+function InsertBeforeElement(element, beforeName, space)
+{
+    var parent = document.getElementsByName(beforeName)[0].parentNode;
+    var beforeElement = document.getElementsByName(beforeName)[0];
+    parent.insertBefore(element, beforeElement);
+
+    if (space)
+    {
+        // Insert space
+        parent.insertBefore(document.createTextNode( '\u00A0' ), beforeElement);
+    }
+}
+
+function IncSizeW()
+{
+    // End one more line:
+    for (var i = 0; i < g_MatrixHeight; i ++)
+    {
+        var input = CreateInputElement(i, g_MatrixWidth);
+        InsertBeforeElement(input, "row" + i, true);
+        //InsertBeforeElement(input, "matrixEnd", true);
+    }
+
+    g_MatrixWidth++;
+    CopyMatrixToTextInput();
+}
+
+function IncSizeH()
+{
+    var br = document.createElement("br");
+    br.setAttribute("name", "row" + g_MatrixHeight);
+    InsertBeforeElement(br, "matrixEnd", false);
+
+    for (var i = 0; i < g_MatrixWidth; i ++)
+    {
+        var input = CreateInputElement(g_MatrixHeight, i);
+        InsertBeforeElement(input, "row" + g_MatrixHeight, true);
+    }
+    g_MatrixHeight++;
+    CopyMatrixToTextInput();
+}
+
+window.onload = function ()
+{
+	if (document.getElementById('CreateByIncidenceMatrix'))
+	{
+		document.getElementById('CreateByIncidenceMatrix').onclick = function ()
+		{
+            $("#matrixForm").submit();
+			//window.location = "./?incidenceMatrix=" + $( "#IncidenceMatrixFieldPage" ).val().replace(/\n/g,'%0A');
+	  	}
+        }
+
+	$( "#IncidenceMatrixFieldPage" ).on('keyup change', function (eventObject)
+		{
+			var graph = new Graph();
+
+			if (!graph.TestIncidenceMatrix($( "#IncidenceMatrixFieldPage" ).val(), [], []))
+			{
+				$( "#BadFormatMessage" ).show();
+			}
+			else
+			{
+				$( "#BadFormatMessage" ).hide();
+			}
+		});
+
+		$( "#BadFormatMessage" ).hide();
+            $( "#IncidenceMatrixFieldPage" ).hide();
+
+    $( "#showMatrix" ).on('click', function (eventObject)
+                          {
+                          _ShowMatrixInput();
+                          });
+
+    $( "#showText" ).on('click', function (eventObject)
+                        {
+                        _ShowTextInput();
+                        });
+
+    CopyMatrixToMatrixInput();
+
+}
+</script>
+
+
+    <h1>Creating graph from incidence matrix</h1>
+    <p><p>On this page you can enter incidence matrix and plot graph</p>
+</p>
+
+    <div>
+		<form>
+		<fieldset>
+				<div id="message" class="alert alert-success" role="alert" style="height:64px">
+                    <p id="TextDescription" style="display: none;">Enter incidence matrix. Use comma "," as separator and press "Plot Graph".</p>
+                    <p id="MatrixDescription">Enter incidence matrix. Press "Plot Graph" to plot.</p>
+                </div>
+
+				<div class="row">
+				<div class="col-md-4">
+
+<form>
+<div class="btn-group" data-toggle="buttons">
+<label class="btn btn-default active" id="showMatrix"><input type="radio" name="matrixInputType"> Enter to table</label>
+<label class="btn btn-default" id="showText"><input type="radio" name="matrixInputType"> Enter as text</label>
+</div>
+</form>
+
+<form action="./" method="post" id="matrixForm">
+				<textarea name="incidenceMatrix" id="IncidenceMatrixFieldPage" wrap="off" style="display: none;">
+1, 0
+1, 1
+0, -1
+</textarea>
+</form>
+<div id="MatrixForm">
+<form id="AdjacencyMatrixFieldInput" role="form">
+<input type="text" name="field00" size="3" value = "0" onkeyup="CopyMatrixToTextInput()">
+<input type="text" name="field01" size="3" value = "0" onkeyup="CopyMatrixToTextInput()">
+<br name="row0">
+
+<input type="text" name="field10" size="3" value = "0" onkeyup="CopyMatrixToTextInput()">
+<input type="text" name="field11" size="3" value = "0" onkeyup="CopyMatrixToTextInput()">
+<br name="row1">
+
+<input type="text" name="field20" size="3" value = "0" onkeyup="CopyMatrixToTextInput()">
+<input type="text" name="field21" size="3" value = "0" onkeyup="CopyMatrixToTextInput()">
+<br name="row2">
+
+<span name="matrixEnd"></span>
+</form>
+<button type="button" onclick="IncSizeW()" value="add" name="add" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>
+Add edge</button>
+<button type="button" onclick="IncSizeH()" value="add" name="add" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>
+Add node</button>
+</div>
+
+
+				</div>
+				<div class="col-md-4">
+		  		<button type="button" class="btn btn-default btn-lg" id="CreateByIncidenceMatrix"><span class="glyphicon glyphicon-th"></span> Plot graph</button>
+				<div id="BadFormatMessage" class="alert alert-warning" role="alert">
+					Matrix is incorrect. Use comma "," as separator. Matrix should be square.				</div>
+				</div>
+				</div>
+		</fieldset>
+		</form>
+    </div>
+                 </div>
+
+        <!-- Футер приходится обрамить в .container, потому что у него position:absolute и он занимает всю ширину игнорируя паддинги родителя -->
+
+        <footer class="footer" id="footer" >
+           <div class="container hidden-phone" id="footerContent">
+                    <p>© <a href="/en/">Graph Online</a>&nbsp;is online project aimed at&nbsp;creation and easy visualization of graph and <a href="/en/">shortest path searching</a>. Also you can create&nbsp;<a href="http://graph.unick-soft.ru/en/create_graph_by_matrix">graph from adjacency matrix</a>.&nbsp;<a href="/en/about">About project</a> and <a href="http://graph.unick-soft.ru/en/help">look help page</a>.
+ 2015 - 2019</p>
+           </div>
+        </footer>
+        </div>
+
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter25827098 = new Ya.Metrika({id:25827098,
+                    clickmap:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/25827098" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+	<script>
+		if (typeof preLoadPage == 'function')
+		{
+			preLoadPage();
+		}
+	</script>
+	<script src="/i/js/dev/bootstrap3/bootstrap.min.js" >
+        	        $('.dropdown-toggle').dropdown();
+	</script>
+	<script>
+		if (typeof postLoadPage == 'function')
+		{
+			postLoadPage();
+		}
+	</script>
+    </body>
+</html>
