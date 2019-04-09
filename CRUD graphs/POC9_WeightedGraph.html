@@ -1,7 +1,14 @@
 <!--The desired output is this, and then I can also use this Dijkstr's-->
-<!--https://gist.github.com/stella-yc/49a7b96679ab3bf06e26421fc81b5636-->
+<!--https://gist.github.com/stella-yc/49a7b96679ab3bf06e26421fc81b5636 -->
 
-<!---->
+<!--const problem = {
+  start: {A: 5, B: 2},
+  A: {C: 4, D: 2},
+  B: {A: 8, D: 7},
+  C: {D: 6, finish: 3},
+  D: {finish: 1},
+  finish: {}
+};-->
 
 
 
@@ -26,7 +33,8 @@ function Graph()
 // are these methods
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype
 Graph.prototype.addVertex = function(vertex){
-    this.OurLittleGraph[vertex]=[]
+    // changing from [] to {} changes it in output
+    this.OurLittleGraph[vertex]={}
 }
 
 
@@ -53,11 +61,13 @@ var node =  function(Latitude,Longitude,ID)
     this.ID = ID
 }
 
-var nodeA = new node("0","51","1")
-var nodeB = new node("0","52","2")
-var nodeC = new node("0","53","3")
-var nodeD = new node("0","54","4")
-var nodeE = new node("0","55","5")
+
+// removign the "" remove then in the JSON string
+var nodeA = new node("0","51",1)
+var nodeB = new node("0","52",2)
+var nodeC = new node("0","53",3)
+var nodeD = new node("0","54",4)
+var nodeE = new node("0","55",5)
 
 
 
