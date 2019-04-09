@@ -64,20 +64,20 @@ var nodeE = new node("0","55","5")
 
 
 // I can add single nodes one at a time
-graph.addVertex('A');
-graph.addVertex('B');
-graph.addVertex('C');
-graph.addVertex('D');
-graph.addVertex('E');
+graph.addVertex(nodeA.ID);
+graph.addVertex(nodeB.ID);
+graph.addVertex(nodeC.ID);
+graph.addVertex(nodeD.ID);
+graph.addVertex(nodeE.ID);
 
 // I can add edges one at a time (single direction)
-graph.addEdge('A','B')
-graph.addEdge('D','E')
-graph.addEdge('C','E')
-graph.addEdge('A','D')
-graph.addEdge('A','C')
-graph.addEdge('E','B')
-graph.addEdge('D','B')
+graph.addEdge(nodeA.ID,nodeB.ID)
+graph.addEdge(nodeD.ID,nodeE.ID)
+graph.addEdge(nodeC.ID,nodeE.ID)
+graph.addEdge(nodeA.ID,nodeD.ID)
+graph.addEdge(nodeA.ID,nodeC.ID)
+graph.addEdge(nodeE.ID,nodeB.ID)
+graph.addEdge(nodeD.ID,nodeB.ID)
 
 
 
