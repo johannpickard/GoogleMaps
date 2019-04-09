@@ -19,11 +19,17 @@
   }
 
    addNode(node) {
+
+     // note sure what exactly this does  
     this.nodes.push(node); 
+    // Make an entry in the array at at location "node" and place nothing in there
+    // because that will be populatied later
     this.adjacencyList[node] = [];
   }
 
     addEdge(node1, node2, weight) {
+        // this says find that location in the array and push this 
+        //stuff to it
     this.adjacencyList[node1].push({node:node2, weight: weight});
     this.adjacencyList[node2].push({node:node1, weight: weight});
 
