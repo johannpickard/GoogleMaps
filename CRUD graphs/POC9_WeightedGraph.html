@@ -26,6 +26,9 @@
     addEdge(node1, node2, weight) {
     this.adjacencyList[node1].push({node:node2, weight: weight});
     this.adjacencyList[node2].push({node:node1, weight: weight});
+
+
+    
   }
 }
 
@@ -41,6 +44,14 @@ let map = new Graph();
 // this adds two things to the map
 map.addNode("Location1");
 map.addNode("Location2");
+map.addNode("Location3");
+
+
+// then we are adding an edge
+map.addEdge("Location1", "Location2", 6);
+map.addEdge("Location2", "Location3", 7);
+
+
 
 function printthis(){
 var myJSON = JSON.stringify(map);
