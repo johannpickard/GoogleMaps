@@ -2,13 +2,51 @@
 <!--https://medium.com/@adriennetjohnson/a-walkthrough-of-dijkstras-algorithm-in-javascript-e94b74192026 -->
 
 
+<!--This is just a btoon that when clicked runs the javascript function below-->
+<button onclick="printthis()">Click me</button>
+
+<p id="writing on page"></p>
+
+
+
 <script>
 
-    
-// first we create this thing
-class Graph {
+// this is like the defintition
+ class Graph {
   constructor() {
     this.nodes = [];
     this.adjacencyList = {};
   }
-  </script>  
+
+   addNode(node) {
+    this.nodes.push(node); 
+    this.adjacencyList[node] = [];
+  }
+
+    addEdge(node1, node2, weight) {
+    this.adjacencyList[node1].push({node:node2, weight: weight});
+    this.adjacencyList[node2].push({node:node1, weight: weight});
+  }
+}
+
+
+
+
+
+// then follows the invocation of the above
+
+// this creates a new graph called map. 
+let map = new Graph();
+
+// this adds two things to the map
+map.addNode("Location1");
+map.addNode("Location2");
+
+function printthis(){
+var myJSON = JSON.stringify(map);
+
+document.getElementById("writing on page").innerHTML = myJSON
+};
+
+
+    </script>
