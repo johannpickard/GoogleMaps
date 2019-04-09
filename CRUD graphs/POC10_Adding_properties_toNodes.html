@@ -47,6 +47,24 @@
 // this creates a new graph called map. 
 let map = new Graph();
 
+
+
+var node =  function(Latitude,Longitude,ID)
+{
+    this.Latitude =Latitude
+    this.Longitude = Longitude
+    this.ID = ID
+}
+
+var nodeA = new node("0","51","1")
+var nodeB = new node("0","52","2")
+var nodeC = new node("0","53","3")
+var nodeD = new node("0","54","4")
+var nodeE = new node("0","55","5")
+
+
+
+
 // this adds two things to the map
 map.addNode("Location1");
 map.addNode("Location2");
