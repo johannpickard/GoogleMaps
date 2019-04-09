@@ -1,2 +1,100 @@
 <!--The desired output is this, and then I can also use this Dijkstr's-->
 <!--https://gist.github.com/stella-yc/49a7b96679ab3bf06e26421fc81b5636-->
+
+<!---->
+
+
+
+<!--This is just a btoon that when clicked runs the javascript function below-->
+<button onclick="printthis()">Click me</button>
+
+<p id="writing on page"></p>
+
+
+
+<script>
+
+// this is a function which makes a grpah
+function Graph()
+{
+    // changing the name of OurLittleGraph will change it in the resulting JSON
+    this.OurLittleGraph= {}
+}
+
+/// this is following the
+// For more information on what-tf I am doing here
+// are these methods
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype
+Graph.prototype.addVertex = function(vertex){
+    this.OurLittleGraph[vertex]=[]
+}
+
+
+// usign protype means that if you have multiple graphs instantiated at the same time
+// this method will only appear once in memory for all the graphs. Instead of each having like its redundant method in memeory. 
+Graph.prototype.addEdge =function(vertex1,vertex2){
+    //note, this makes a directed vertex
+    //for a "two way vertex"
+    //https://www.geeksforgeeks.org/implementation-graph-javascript/
+    this.OurLittleGraph[vertex1].push(vertex2)
+}
+
+
+// Created a new variable called graph ... which has the type Graph
+const graph = new Graph()
+
+
+
+var node =  function(Latitude,Longitude,ID)
+{
+    this.Latitude =Latitude
+    this.Longitude = Longitude
+    this.ID = ID
+}
+
+var nodeA = new node("0","51","1")
+var nodeB = new node("0","52","2")
+var nodeC = new node("0","53","3")
+var nodeD = new node("0","54","4")
+var nodeE = new node("0","55","5")
+
+
+
+
+
+
+
+// I can add single nodes one at a time
+graph.addVertex(nodeA.ID);
+graph.addVertex(nodeB.ID);
+graph.addVertex(nodeC.ID);
+graph.addVertex(nodeD.ID);
+graph.addVertex(nodeE.ID);
+
+// I can add edges one at a time (single direction)
+graph.addEdge(nodeA.ID,nodeB.ID)
+graph.addEdge(nodeD.ID,nodeE.ID)
+graph.addEdge(nodeC.ID,nodeE.ID)
+graph.addEdge(nodeA.ID,nodeD.ID)
+graph.addEdge(nodeA.ID,nodeC.ID)
+graph.addEdge(nodeE.ID,nodeB.ID)
+graph.addEdge(nodeD.ID,nodeB.ID)
+
+
+
+
+// this shows the object, as an object in the broser console (the one you can see from right click inspect)
+function printthis()
+{
+console.log(graph.toString());
+
+
+// this convert the graph from a javascript onject into a json string.
+var myJSON = JSON.stringify(graph);
+
+// this changes the txt on the html page to display the JSON string representation of the JS object
+document.getElementById("writing on page").innerHTML = myJSON;
+}
+
+</script>
+
