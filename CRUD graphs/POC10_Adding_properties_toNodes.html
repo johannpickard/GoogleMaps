@@ -4,10 +4,8 @@
 
 <!--This is just a btoon that when clicked runs the javascript function below-->
 <button onclick="printthis()">Click me</button>
+
 <p id="writing on page"></p>
-
-
-
 
 
 
@@ -19,7 +17,6 @@
     this.nodes = [];
     this.adjacencyList = {};
   }
-
 
    addNode(node) {
     this.nodes.push(node); 
@@ -36,18 +33,6 @@
 }
 
 
-// when we add not to the graph we can just pass the ID or name to that
-var location =  function(Latitude,Longitude,ID)
-{
-    this.Latitude =Latitude
-    this.Longitude = Longitude
-    this.ID = ID
-}
-
-// (lat, long, ID)
-var node1 = new location("0","50","1")
-var node2 = new location("0","50","2")
-var node3 = new location("0","50","3")
 
 
 
@@ -57,26 +42,22 @@ var node3 = new location("0","50","3")
 let map = new Graph();
 
 // this adds two things to the map
-map.addNode(node1.ID);
-map.addNode(node2.ID);
-map.addNode(node3.ID);
+map.addNode("Location1");
+map.addNode("Location2");
+map.addNode("Location3");
 
 
 // then we are adding an edge
-map.addEdge(node1.ID, node2.ID, 6);
-map.addEdge(node2.ID, node3.ID, 7);
+map.addEdge("Location1", "Location2", 6);
+map.addEdge("Location2", "Location3", 7);
 
 
-
-
-var myJSON = JSON.stringify(map);
 
 function printthis(){
-    document.getElementById("writing on page").innerHTML = myJSON
-}
+var myJSON = JSON.stringify(map);
+
+document.getElementById("writing on page").innerHTML = myJSON
+};
 
 
-
-
-
-</script>
+    </script>
