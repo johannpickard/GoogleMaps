@@ -32,6 +32,7 @@ Graph.prototype.addVertex = function(vertex){
 
 // usign protype means that if you have multiple graphs instantiated at the same time
 // this method will only appear once in memory for all the graphs. Instead of each having like its redundant method in memeory. 
+// unlike C there is no malloc, but things still auto go in memory
 Graph.prototype.addEdge =function(vertex1,vertex2){
     //note, this makes a directed vertex
     //for a "two way vertex"
