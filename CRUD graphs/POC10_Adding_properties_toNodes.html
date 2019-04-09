@@ -1,6 +1,6 @@
 <!--Starting all over again but with the proper implementation-->
 <!--https://medium.com/@adriennetjohnson/a-walkthrough-of-dijkstras-algorithm-in-javascript-e94b74192026 -->
-
+<!--this has nodes with coordinates and edges with lengths-->
 
 <!--This is just a btoon that when clicked runs the javascript function below-->
 <button onclick="printthis()">Click me</button>
@@ -66,14 +66,14 @@ var nodeE = new node("0","55","5")
 
 
 // this adds two things to the map
-map.addNode("Location1");
-map.addNode("Location2");
-map.addNode("Location3");
+map.addNode(nodeA.ID);
+map.addNode(nodeB.ID);
+map.addNode(nodeC.ID);
 
 
 // then we are adding an edge
-map.addEdge("Location1", "Location2", 6);
-map.addEdge("Location2", "Location3", 7);
+map.addEdge(nodeA.ID, nodeB.ID, 6);
+map.addEdge(nodeB.ID, nodeC.ID, 7);
 
 
 
