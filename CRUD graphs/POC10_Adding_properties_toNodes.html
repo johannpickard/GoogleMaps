@@ -5,6 +5,8 @@
 <!--This is just a btoon that when clicked runs the javascript function below-->
 <button onclick="printthis()">Click me</button>
 
+
+
 <p id="writing on page"></p>
 
 
@@ -43,9 +45,9 @@ var location =  function(Latitude,Longitude,ID)
 }
 
 // (lat, long, ID)
-var node1 = new node("0","50","1")
-var node2 = new node("0","50","2")
-var node3 = new node("0","50","3")
+var node1 = new node("0","50","1");
+var node2 = new node("0","50","2");
+var node3 = new node("0","50","3");
 
 
 
@@ -70,7 +72,6 @@ function printthis(){
 var myJSON = JSON.stringify(map);
 
 document.getElementById("writing on page").innerHTML = myJSON
-};
+}
 
-
-    </script>
+</script>
