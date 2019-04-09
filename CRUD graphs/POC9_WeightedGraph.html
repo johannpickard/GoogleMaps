@@ -34,7 +34,9 @@ function Graph()
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype
 Graph.prototype.addVertex = function(vertex){
     // changing from [] to {} changes it in output
-    this.OurLittleGraph[vertex]={}
+    this.OurLittleGraph[vertex]=[]
+
+
 }
 
 
@@ -46,6 +48,14 @@ Graph.prototype.addEdge =function(vertex1,vertex2){
     //for a "two way vertex"
     //https://www.geeksforgeeks.org/implementation-graph-javascript/
     this.OurLittleGraph[vertex1].push(vertex2)
+    
+}
+
+
+
+Graph.prototype.AddEdgeWeight = function(vertex1)
+{
+
 }
 
 
