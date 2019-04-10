@@ -5,6 +5,9 @@
 // the following graph class is taken from - which does it in the way I would
 // http://graphonline.ru/en/create_graph_by_matrix
 
+// This graph is quite complete in terms of what it models and the actions and how it alllows you to 
+// add and remove data
+
 
 
 function Graph()
